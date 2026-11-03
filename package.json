@@ -1,0 +1,10 @@
+{
+  "name": "market_intelligence",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix market_intelligence_monorepo",
+    "crawl:ml": "npm run crawl:ml --prefix market_intelligence_monorepo",
+    "scrape:ml": "npm run scrape:ml --prefix market_intelligence_monorepo",
+    "up": "bash market_intelligence_monorepo/up.sh"
+  }
+}

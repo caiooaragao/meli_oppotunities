@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: market-intelligence-db
+    environment:
+      POSTGRES_USER: mi
+      POSTGRES_PASSWORD: mi
+      POSTGRES_DB: market_intelligence
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+      - market_intelligence_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mi -d market_intelligence"]
+      interval: 2s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  market_intelligence_pg:
